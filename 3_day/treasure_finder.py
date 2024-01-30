@@ -1,7 +1,7 @@
 print("Welcome to Ozomba Island")
 print("You have been chosen to find the missing prince")
 print("The King is counting on you and may the gods be with you")
-direction = input("You are at a T-junction, where would you go? Type 'left' or 'right': ")
+direction = input("You are at a T-junction, where would you go? Type 'left' or 'right': ").lower()
 
 if direction == "left":
     decision = input("You are at a river, type 'swim' to swim and 'wait' to wait for a boat: ")

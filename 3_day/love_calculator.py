@@ -2,6 +2,7 @@ print("This is your favourite Love Calculator")
 mine = input("What is your Name: ")
 yours = input("What is your spouse Name: ")
 name = (mine + yours).lower()
+print(yes.count("ola"))
 
 true = ['t', 'r', 'u', 'e']
 firstDigit = 0
