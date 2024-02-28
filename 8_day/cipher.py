@@ -5,7 +5,8 @@ def cipher(alpha, op, txt, shift):
             pos = alpha.index(letter)
             new_pos = pos + shift
             if new_pos > 25:
-                new_pos -= 26
+                a = new_pos % 26
+                new_pos = a
             new_txt += alpha[new_pos]
         print("Your encrypted text is {}".format(new_txt))
     
@@ -14,7 +15,8 @@ def cipher(alpha, op, txt, shift):
             pos = alpha.index(letter)
             new_pos = pos - shift
             if new_pos < 0:
-                new_pos += 26
+                a = new_pos + 26
+                new_pos = a % 26
             new_txt += alpha[new_pos]
         print("Your decrypted text is {}".format(new_txt))
     else:
