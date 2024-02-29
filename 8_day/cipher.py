@@ -10,14 +10,13 @@ def cipher(op, txt, shift):
             if new_pos > 25:
                 a = new_pos % 26
                 new_pos = a
-            new_txt += alphabets[new_pos]
     
         elif op == 'decode':
             new_pos = pos - shift
             if new_pos < 0:
                 a = new_pos + 26
                 new_pos = a % 26
-            new_txt += alphabets[new_pos]
+        new_txt += alphabets[new_pos]
     print("Your {}d text is {}".format(op, new_txt))
 
 while is_op:
