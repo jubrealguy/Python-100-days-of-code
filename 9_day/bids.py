@@ -26,5 +26,5 @@ if another_bidder == False:
 
     for j in range(len(bid_list)):
         if bid_list[j]["bid"] == maxim:
-            print(bid_list[j]["name"])
+            print(f"The winner is {bid_list[j]['name']} with a bid of ${bid_list[i]['bid']}")
 
