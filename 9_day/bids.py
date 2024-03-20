@@ -40,10 +40,10 @@ clear = lambda: system('cls')
 print(logo)
 another_bidder = True
 
+bid_dict = {}
 while another_bidder:
     name = input("What is your name? ")
     price = int(input("How much are you bidding? $"))
-    bid_dict = {}
     bid_dict[name] = price
     ans = input("Is there another bidder? Type 'yes' or 'no' ").lower()
 
@@ -52,11 +52,13 @@ while another_bidder:
     elif ans == 'yes':
         clear()
 
+print(bid_dict)
 maxim = 0
 if another_bidder == False:
     for item in bid_dict:
-        if bid_dict[name] > maxim:
-            maxim = bid_dict[name]
+        if bid_dict[item] > maxim:
+            maxim = bid_dict[item]
 
-    if bid_dict[name] == maxim:
-        print(f"The winner is {name} with a bid of ${bid_dict[name]}")
+    for item in bid_dict:
+        if bid_dict[item] == maxim:
+            print(f"The winner is {item} with a bid of ${bid_dict[item]}")
