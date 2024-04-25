@@ -1,4 +1,7 @@
+from arts import logo
+
 def calc():
+    print(logo)
     num1 = float(input("Enter first number: "))
 
     op_valid = True
