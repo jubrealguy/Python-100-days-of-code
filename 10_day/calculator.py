@@ -13,7 +13,6 @@ while op_valid:
     else:
         print('Wrong operation')
         
-
 num2 = float(input("Enter second number: "))
 
 def calculator(num1, num2):
@@ -41,8 +40,8 @@ while continue_op:
         print("Thank you!!!")
     elif another_op == "yes":  
         num1 = calculator(num1, num2)
-        op = input("Choose operation: ")
-        num2 = float(input("Enter second number: "))
+        op = input("Choose another operation: ")
+        num2 = float(input("Enter next number: "))
         calculator(num1, num2)
     else:
         another_op
