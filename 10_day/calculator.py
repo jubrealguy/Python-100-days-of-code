@@ -29,19 +29,25 @@ def calculator(num1, num2):
     print(f"{num1} {op} {num2} = {ans}")
     return ans
 
-calculator(num1, num2)
-    
+answer = calculator(num1, num2)
 continue_op = True
 
 while continue_op:
-    another_op = input("Do you want to continue calculating? \"Yes\" or \"No\": ").lower()
+    op_check = True
+    another_op = input(f"Do you want to continue calculating with {answer}? \"Yes\" or \"No\": ").lower()
     if another_op == "no":
         continue_op = False
         print("Thank you!!!")
     elif another_op == "yes":  
-        num1 = calculator(num1, num2)
-        op = input("Choose another operation: ")
+        num1 = answer
+        while op_check:
+            op = input("Choose another operation: ")
+            if op == '+' or op == '-' or op == '*' or op == '/':
+                op_check = False
+            else:
+                print('Wrong operation')
+                op
         num2 = float(input("Enter next number: "))
-        calculator(num1, num2)
+        answer = calculator(num1, num2)
     else:
         another_op
