@@ -1,23 +1,20 @@
-def add(a, b):
-    return a + b
+num1 = float(input("Enter a number: "))
 
-def subtract(a, b):
-    return a - b
-
-def multiply(a, b):
-    return a * b
-
-def divide(a, b):
-    return a / b
-
-num1 = int(input("Enter a number: "))
-op = input("""Choose an operator from the options below
-           +
-           -
-           *
-           /
+op_valid = True
+while op_valid:
+    op = input("""Choose an operator from the options below
+    +
+    -
+    *
+    /
 """)
-num2 = int(input("Enter second number: "))
+    if op == '+' or op == '-' or op == '*' or op == '/':
+        op_valid = False
+    else:
+        print('Wrong operation')
+        
+
+num2 = float(input("Enter second number: "))
 
 def calculator(num1, num2):
     if op == '+':
@@ -27,21 +24,25 @@ def calculator(num1, num2):
     elif op == '*':
         ans = num1 * num2
     elif op == '/':
-        ans = int(num1 / num2)
-    else:
-        ans = "Wrong operation"
+        ans = num1 / num2
+
+    ans = round(ans, 2)
+    print(f"{num1} {op} {num2} = {ans}")
     return ans
 
-print(calculator(num1, num2))
+calculator(num1, num2)
     
 continue_op = True
 
 while continue_op:
-    another_op = input("Do you want to continue calculating? \"Yes\" or \"No\" ").lower()
-    if another_op =="no":
+    another_op = input("Do you want to continue calculating? \"Yes\" or \"No\": ").lower()
+    if another_op == "no":
         continue_op = False
-    else:  
+        print("Thank you!!!")
+    elif another_op == "yes":  
         num1 = calculator(num1, num2)
         op = input("Choose operation: ")
-        num2 = int(input("Enter second number: "))
-        print(calculator(num1, num2))
+        num2 = float(input("Enter second number: "))
+        calculator(num1, num2)
+    else:
+        another_op
