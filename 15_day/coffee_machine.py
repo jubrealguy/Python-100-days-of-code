@@ -23,16 +23,16 @@ def output(coffee):
     change = input_amount() - money
     change = round(change, 2)
 
-    if change >= 0:
+    if change >= 0 and resources["milk"] > 0 and resources["water"] > 0 and resources["coffee"] > 0:
         print(f"you have {change} in change")
         print(f"Here is your {coffee}. Enjoy!!!")
     elif change < 0:
         print("That is not enough money. Money refunded")
-    elif resources["milk"] < 0:
+    elif resources["milk"] <= 0:
         print("There is no enough milk")
-    elif resources["water"] < 0:
+    elif resources["water"] <= 0:
         print("There is no enough water")
-    elif resources["coffee"] < 0:
+    elif resources["coffee"] <= 0:
         print("There is no enough coffee")
 
 should_continue = True
@@ -50,7 +50,7 @@ while should_continue:
     elif coffee_type == "off":
         should_continue = False
     else:
-        print("Not available. Please, choose from (espresso/latte/cappuccino): ")
+        print("Not available, please ")
 
     # print report
     # check if resources are sufficcient
