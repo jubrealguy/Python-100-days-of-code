@@ -45,7 +45,7 @@ def computer():
     print(f"Computer cards: {computer_choice}")
     print(f"My cards: {my_choice}")
 
-computer_choice =[rd.choice(cards)]
+computer_choice = [rd.choice(cards)]
 replace_with_10(computer_choice)
 for x in range(len(computer_choice)):
     if computer_choice[x] == "A":
