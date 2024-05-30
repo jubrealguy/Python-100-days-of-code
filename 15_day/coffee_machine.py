@@ -33,7 +33,7 @@ def output(coffee):
             print(f"There is no enough {item}")
 
     if change >= 0 and resources["milk"] > 0 and resources["water"] > 0 and resources["coffee"] > 0:
-        print(f"you have {change} in change")
+        print(f"you have ${change} in change")
         print(f"Here is your {coffee} ☕️ Enjoy!!!")
     elif change < 0:
         print("That is not enough money. Money refunded")
@@ -51,7 +51,10 @@ while should_continue:
         output(coffee_type)
     elif coffee_type == "report":
         for key, value in resources.items():
-            print(f"{key}: {value}")
+            if key == 'money':
+                print(f"{key}: ${value}")
+            else:
+                print(f"{key}: {value}")
     else:
         print("Not available, please ")
 
