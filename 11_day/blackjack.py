@@ -79,4 +79,3 @@ while continue_play:
         continue_play = False
     else:
         continue_play
-        
