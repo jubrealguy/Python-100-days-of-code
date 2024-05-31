@@ -2,6 +2,7 @@ import random as rd
 cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "K", "Q", "J"]
 
 def winner():
+    """unction that checks the checks conditions for winning"""
     sum_computer = sum(computer_choice)
     sum_player = sum(my_choice)
     
@@ -20,11 +21,13 @@ def winner():
     print("Thank you")
 
 def replace_with_10(card_arr):
+    """Function that replaces K, Q, J with 10"""
     for x in range(len(card_arr)):
         if card_arr[x] == "K" or card_arr[x] == "Q" or card_arr[x] == "J":
             card_arr[x] = 10
 
 def choice():
+    """User Function"""
     replace_with_10(my_choice)
     for x in range(len(my_choice)):
         if my_choice[x] == "A":
@@ -37,6 +40,7 @@ def choice():
                 
 
 def computer():
+    """Computer Function"""
     computer_choice.append(rd.choice(cards))
     replace_with_10(computer_choice)
     for x in range(len(computer_choice)):
