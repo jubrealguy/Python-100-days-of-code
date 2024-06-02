@@ -5,9 +5,13 @@ from quiz_brain import QuizBrain
 
 question_bank = []
 for item in question_data:
-    new_q = Question(item['text'], item['answer'])
+    question_text = item['text']
+    question_answer = item['answer']
+    new_q = Question(question_text, question_answer)
     question_bank.append(new_q)
 
 quiz = QuizBrain(question_bank)
-for i in range(len(question_bank)):
-    quiz.check_answer()
+while quiz.still_has_question():
+    quiz.next_question()
+
+quiz.quiz_completed()
