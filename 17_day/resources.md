@@ -1,1 +1,1 @@
-opentdb.com for generating questions
+<a href="www.opentdb.com">opentdb.com</a> for generating questions

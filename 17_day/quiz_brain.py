@@ -1,3 +1,5 @@
+"""The class QuizBrain where all the brain of the Quiz is"""
+
 class QuizBrain:
     def __init__(self, q_list):
         self.question_no = 0

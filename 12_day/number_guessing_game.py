@@ -31,6 +31,7 @@ def guess_game(num_trials):
                 print(f"Too low\nGuess again")
         else:
             print(f"You have run out of guesses, you lose")
+            print("The answer is {}".format(random_num))
             more_attempts = False
         num_trials-=1
 
