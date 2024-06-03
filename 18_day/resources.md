@@ -1,1 +1,1 @@
-<a href="[hi](https://docs.python.org/3/library/turtle.html)">opentdb.com</a> for generating questions
+<a href="https://docs.python.org/3/library/turtle.html">Turtle</a> for generating questions
