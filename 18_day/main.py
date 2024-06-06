@@ -8,8 +8,8 @@ set_angles = [0, 90, 180, 270]
 snake = Turtle()
 screen = Screen()
 snake.shape("turtle")
-snake.color("red")
-snake.pensize(10)
+# snake.color("red")
+# snake.pensize(10)
 snake.speed('fastest')
 screen.colormode(255)
 
@@ -45,6 +45,7 @@ screen.colormode(255)
 #     prev_angle = next_angle
 #     snake.color(rd.choice(colors))
 
+# Generating a random walk
 def randomColor():
     r = rd.randint(1, 255)
     g = rd.randint(1, 255)
@@ -53,11 +54,26 @@ def randomColor():
     color = (r, g, b)
     return color
 
-for _ in range(5000):
-    next_angle = rd.choice(set_angles)
-    snake.forward(20)
-    snake.setheading(next_angle)
+# for _ in range(5000):
+#     next_angle = rd.choice(set_angles)
+#     snake.forward(20)
+#     snake.setheading(next_angle)
+#     snake.color(randomColor())
+
+# Drawing a spiragraph - 1
+for i in range(72):
     snake.color(randomColor())
+    snake.circle(100)
+    snake.setheading(i*5)
+
+# # Drawing a spiragraph - 2
+# def draw_spiragraph(gap_size):
+#     for _ in range(int(360 / gap_size)):
+#         snake.color(randomColor())
+#         snake.circle(100)
+#         snake.setheading(snake.heading() + gap_size)
+
+# draw_spiragraph(5)
 
 
 screen.exitonclick()
