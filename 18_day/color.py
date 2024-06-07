@@ -1,8 +1,9 @@
 from turtle import Turtle, Screen
 import random as rd
+# import colorgram
 
 # rgb_colors = []
-# colors = colorgram.extract('images.jpg', 6)
+# colors = colorgram.extract('imagess.jpg', 6)
 # for color in colors:
 #     r = color.rgb.r
 #     g = color.rgb.g
@@ -14,39 +15,42 @@ import random as rd
 def normalize_color(color):
     return (color[0]/255, color[1]/255, color[2]/255)
 
-color_list = [(252, 250, 245), (253, 245, 250), (238, 252, 244), (237, 243, 251), (244, 229, 50), (202, 7, 33)]
+color_list = [(246, 245, 243), (233, 239, 246), (246, 239, 242), (240, 246, 243), (132, 166, 205), (221, 148, 106)]
 
 snake = Turtle()
 screen = Screen()
-screen.bgcolor("black")
-screen.setup(width=800, height=600)
-default_position = (-350, -250)
+
+x_default = -(screen.window_width() // 2) + 50
+y_default = -(screen.window_height() // 2) + 50
+snake.speed('fastest')
+snake.penup()
+default_position = (x_default, y_default)
 snake.goto(default_position)
+snake.pendown()
 snake.shape("turtle")
 snake.pensize(20)
-snake.speed('fastest')
 
-while snake.ycor() < screen.window_height():
-    snake.color(normalize_color(rd.choice(color_list)))
-    snake.forward(1)
-    snake.penup()
-    snake.forward(50)
-    snake.pendown()
+print(screen.window_height())
+print(screen.window_width())
 
-    if snake.xcor() >= 350:
-        snake.setheading(90)
+while snake.ycor() < screen.window_height() // 2:
+    def move_snake():
         snake.forward(1)
         snake.penup()
         snake.forward(50)
         snake.pendown()
+
+    snake.color(normalize_color(rd.choice(color_list)))
+    move_snake()
+
+    if snake.xcor() > (screen.window_width() // 2) - 100:
+        snake.setheading(90)
+        move_snake()
         snake.setheading(180)
 
-    if snake.xcor() <= -350:
+    if snake.xcor() <= -(screen.window_width() // 2) + 50:
         snake.setheading(90)
-        snake.forward(1)
-        snake.penup()
-        snake.forward(50)
-        snake.pendown()
+        move_snake()
         snake.setheading(360)
 
 
