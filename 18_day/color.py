@@ -12,7 +12,8 @@ screen.colormode(255)  # Set color mode to 255 to use RGB colors directly
 # Initial turtle setup
 snake.speed('fastest')
 #snake.shape("turtle")
-snake.pensize(20)
+snake.hideturtle()
+
 def transparent_move_to_edge(x, y):
     snake.penup()
     snake.goto(x, y)
@@ -24,8 +25,8 @@ def move_snake():
     snake.forward(50)
     snake.pendown()
 
-x_default = -250
-y_default = -250
+x_default = -225
+y_default = -225
 
 for _ in range(10):
     transparent_move_to_edge(x_default, y_default)
