@@ -13,34 +13,56 @@ screen.colormode(255)  # Set color mode to 255 to use RGB colors directly
 snake.speed('fastest')
 #snake.shape("turtle")
 snake.pensize(20)
-
-
-# Function to move the turtle forward by 50 units, lifting the pen for the second half
-def move_snake():
-    snake.forward(1)
-    snake.penup()
-    snake.forward(50)
-    snake.pendown()
-
 def transparent_move_to_edge(x, y):
     snake.penup()
     snake.goto(x, y)
     snake.pendown()
 
-# Initial position setup
-x_default = -(screen.window_width() // 2) + 50
-y_default = -(screen.window_height() // 2) + 50
+def move_snake():
+    snake.dot(20, rd.choice(color_list))
+    snake.penup()
+    snake.forward(50)
+    snake.pendown()
 
-transparent_move_to_edge(x_default, y_default)
+x_default = -250
+y_default = -250
 
-# Main loop to move the turtle across the screen in a grid pattern
-while snake.ycor() < screen.window_height() // 2:
-    snake.color(rd.choice(color_list))  # Choose a random color
-    if snake.xcor() < screen.window_width() // 2 - 50:
-        move_snake()  # Move forward if within the screen width
-    else:
-        y_default += 50  # Move up by 50 units if at the right edge
-        transparent_move_to_edge(x_default, y_default)
+for _ in range(10):
+    transparent_move_to_edge(x_default, y_default)
+    for i in range(10):
+        move_snake()
+    y_default += 50
+
+
+
+# < - - - - - - - - - - - - - - - - - > 
+
+# # Function to move the turtle forward by 50 units, lifting the pen for the second half
+# def move_snake():
+#     snake.forward(1)
+#     snake.penup()
+#     snake.forward(50)
+#     snake.pendown()
+
+# def transparent_move_to_edge(x, y):
+#     snake.penup()
+#     snake.goto(x, y)
+#     snake.pendown()
+
+# # Initial position setup
+# x_default = -(screen.window_width() // 2) + 50
+# y_default = -(screen.window_height() // 2) + 50
+
+# transparent_move_to_edge(x_default, y_default)
+
+# # Main loop to move the turtle across the screen in a grid pattern
+# for _ in range(10):
+#     snake.color(rd.choice(color_list))  # Choose a random color
+#     if snake.xcor() < screen.window_width() // 2 - 50:
+#         move_snake()  # Move forward if within the screen width
+#     else:
+#         y_default += 50  # Move up by 50 units if at the right edge
+#         transparent_move_to_edge(x_default, y_default)
 
 
 screen.exitonclick()
