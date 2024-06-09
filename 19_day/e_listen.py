@@ -8,6 +8,7 @@ def move_forward():
 
 def face_up():
     ade.left(90)
+    ade.forward(10)
 
 screen.listen()
 screen.onkey(key="space", fun=move_forward)
