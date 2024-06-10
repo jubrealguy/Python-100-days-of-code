@@ -1,60 +1,69 @@
 from turtle import Turtle, Screen
 import random as rd
-# import colorgram
 
-# rgb_colors = []
-# colors = colorgram.extract('imagess.jpg', 6)
-# for color in colors:
-#     r = color.rgb.r
-#     g = color.rgb.g
-#     b = color.rgb.b
-#     new_color = (r, g, b)
-#     rgb_colors.append(new_color)
-# print(rgb_colors)
-
-def normalize_color(color):
-    return (color[0]/255, color[1]/255, color[2]/255)
-
+# List of colors to be used
 color_list = [(246, 245, 243), (233, 239, 246), (246, 239, 242), (240, 246, 243), (132, 166, 205), (221, 148, 106)]
 
+# Create turtle object and screen
 snake = Turtle()
 screen = Screen()
+screen.colormode(255)  # Set color mode to 255 to use RGB colors directly
 
-x_default = -(screen.window_width() // 2) + 50
-y_default = -(screen.window_height() // 2) + 50
+# Initial turtle setup
 snake.speed('fastest')
-snake.penup()
-default_position = (x_default, y_default)
-snake.goto(default_position)
-snake.pendown()
-snake.shape("turtle")
-snake.pensize(20)
+#snake.shape("turtle")
+snake.hideturtle()
 
-print(screen.window_height())
-print(screen.window_width())
+def transparent_move_to_edge(x, y):
+    snake.penup()
+    snake.goto(x, y)
+    snake.pendown()
 
-while snake.ycor() < screen.window_height() // 2:
-    def move_snake():
-        snake.forward(1)
-        snake.penup()
-        snake.forward(50)
-        snake.pendown()
+def move_snake():
+    snake.dot(20, rd.choice(color_list))
+    snake.penup()
+    snake.forward(50)
+    snake.pendown()
 
-    snake.color(normalize_color(rd.choice(color_list)))
-    move_snake()
+x_default = -225
+y_default = -225
 
-    if snake.xcor() > (screen.window_width() // 2) - 100:
-        snake.setheading(90)
+for _ in range(10):
+    transparent_move_to_edge(x_default, y_default)
+    for i in range(10):
         move_snake()
-        snake.setheading(180)
-
-    if snake.xcor() <= -(screen.window_width() // 2) + 50:
-        snake.setheading(90)
-        move_snake()
-        snake.setheading(360)
+    y_default += 50
 
 
 
+# < - - - - - - - - - - - - - - - - - > 
+
+# # Function to move the turtle forward by 50 units, lifting the pen for the second half
+# def move_snake():
+#     snake.forward(1)
+#     snake.penup()
+#     snake.forward(50)
+#     snake.pendown()
+
+# def transparent_move_to_edge(x, y):
+#     snake.penup()
+#     snake.goto(x, y)
+#     snake.pendown()
+
+# # Initial position setup
+# x_default = -(screen.window_width() // 2) + 50
+# y_default = -(screen.window_height() // 2) + 50
+
+# transparent_move_to_edge(x_default, y_default)
+
+# # Main loop to move the turtle across the screen in a grid pattern
+# for _ in range(10):
+#     snake.color(rd.choice(color_list))  # Choose a random color
+#     if snake.xcor() < screen.window_width() // 2 - 50:
+#         move_snake()  # Move forward if within the screen width
+#     else:
+#         y_default += 50  # Move up by 50 units if at the right edge
+#         transparent_move_to_edge(x_default, y_default)
 
 
 screen.exitonclick()
