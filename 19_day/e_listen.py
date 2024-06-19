@@ -8,9 +8,9 @@ def move_forward():
 
 def face_up():
     ade.left(90)
-    ade.forward(10)
+    ade.forward(100)
 
 screen.listen()
-screen.onkey(key="space", fun=move_forward)
+screen.onkey(key="space", fun=face_up)
 
 screen.exitonclick()
