@@ -2,7 +2,7 @@ from turtle import Turtle, Screen
 import threading
 import random as rd
 
-
+# Naming of Turtles
 ade = Turtle()
 tosin = Turtle()
 ola = Turtle()
@@ -11,6 +11,7 @@ titi = Turtle()
 
 screen = Screen()
 
+# Turtles, their names, colors and positions in a tuple
 turtles = [
     (ade, "ade", "red", -350, -300),
     (tosin, "tosin", "blue", -350, -150),
@@ -19,12 +20,14 @@ turtles = [
     (titi, "titi", "purple", -350, 300)
 ]
 
+# Assigning color and positions to the turtles
 for turtle, name, color, x, y in turtles:
     turtle.shape("turtle")
     turtle.color(color)
     turtle.penup()
     turtle.goto(x, y)
 
+# Moving the turtles from starting to finishing and determining the first position
 race_over = threading.Event()
 def move_turtle(turtle, name):
     while turtle.xcor() < 330 and not race_over.is_set():
@@ -35,11 +38,12 @@ def move_turtle(turtle, name):
             screen.ontimer(screen.bye, 1000)
             break
 
-
+# A function that turtles starts at the same time and move at the same time
 def start_race():
     for turtle, name, col, x, y in turtles:
         threading.Thread(target=move_turtle, args=(turtle, name)).start()
 
+# Using the space key to trigger the function
 screen.onkey(start_race, "space")
 screen.listen()
 
