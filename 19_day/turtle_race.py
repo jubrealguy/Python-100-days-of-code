@@ -1,5 +1,7 @@
 from turtle import Turtle, Screen
+import threading
 import random as rd
+
 
 ade = Turtle()
 tosin = Turtle()
@@ -9,60 +11,38 @@ titi = Turtle()
 
 screen = Screen()
 
-ade.shape("turtle")
-ade.color("red")
-ade.penup()
-ade.goto(-250, -250)
+turtles = [
+    (ade, "ade", "red", -350, -300),
+    (tosin, "tosin", "blue", -350, -150),
+    (ola, "ola", "green", -350, 0),
+    (dayo, "dayo", "yellow", -350, 150),
+    (titi, "titi", "purple", -350, 300)
+]
 
-tosin.shape("turtle")
-tosin.color("blue")
-tosin.penup()
-tosin.goto(-250, -125)
+for turtle, name, color, x, y in turtles:
+    turtle.shape("turtle")
+    turtle.color(color)
+    turtle.penup()
+    turtle.goto(x, y)
 
-ola.shape("turtle")
-ola.color("green")
-ola.penup()
-ola.goto(-250, 0)
-
-dayo.shape("turtle")
-dayo.color("yellow")
-dayo.penup()
-dayo.goto(-250, 125)
-
-titi.shape("turtle")
-titi.color("purple")
-titi.penup()
-titi.goto(-250, 250)
-
-
-while ade.xcor() < 250:
-    ade.forward(rd.randint(1, 4))
-
-while tosin.xcor() < 250:
-    tosin.forward(rd.randint(1, 4))
-
-while ola.xcor() < 250:
-    ola.forward(rd.randint(1, 4))
-
-while dayo.xcor() < 250:
-    dayo.forward(rd.randint(1, 4))
-
-while titi.xcor() < 250:
-    titi.forward(rd.randint(1, 4))
+race_over = threading.Event()
+def move_turtle(turtle, name):
+    while turtle.xcor() < 330 and not race_over.is_set():
+        turtle.forward(rd.randint(1, 5))
+        if turtle.xcor() >= 330 and not race_over.is_set():
+            race_over.set()
+            print(f"{name} with color {turtle.color()[0]} has won the game")
+            screen.ontimer(screen.bye, 1000)
+            break
 
 
+def start_race():
+    for turtle, name, col, x, y in turtles:
+        threading.Thread(target=move_turtle, args=(turtle, name)).start()
 
+screen.onkey(start_race, "space")
+screen.listen()
 
-# tosin.shape("turtle")
-# ola.shape("turtle")
-# dayo.shape("turtle")
-# titi.shape("turtle")
-
-
-# tosin.color("blue")
-# ola.color("green")
-# dayo.color("yellow")
-# titi.color("purple")
 
 
 
