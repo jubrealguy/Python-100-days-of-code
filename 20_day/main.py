@@ -1,4 +1,5 @@
-from turtle import Turtle, Screen
+from turtle import Screen
+from snake import Snake
 import time
 
 # Formatting the game screen
@@ -8,26 +9,19 @@ screen.bgcolor('black')
 screen.title('A Snake Game')
 screen.tracer(0)
 
-# Buildind a Snake of three blocks
-starting_pos = [(0, 0), (-20, 0), (-40, 0)]
-snake = []
-for pos in starting_pos:
-    snake_block = Turtle('square')
-    snake_block.color('white')
-    snake_block.penup()
-    snake_block.goto(pos)
-    snake.append(snake_block)
+snake = Snake()
+
+screen.listen()
+screen.onkey(snake.up, 'Up')
+screen.onkey(snake.down, 'Down')
+screen.onkey(snake.left, 'Left')
+screen.onkey(snake.right, 'Right')
 
 # Moving the snake, making a snake block replace the position of the one in it's front
 game_on = True
 while game_on:
     screen.update()
     time.sleep(0.1)
-    for block_index in range(2, 0, -1):
-        x_cor = snake[block_index - 1].xcor()
-        y_cor = snake[block_index - 1].ycor()
-        snake[block_index].goto(x_cor, y_cor)
-    snake[0].forward(20)
-    snake[0].left(90)
+    snake.move_snake()
 
 screen.exitonclick ()
