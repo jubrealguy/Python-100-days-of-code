@@ -2,11 +2,12 @@ from turtle import Screen
 from snake import Snake
 from food import Food
 from score import Scoreboard
+from frame import Frame
 import time
 
 # Formatting the game screen
 screen = Screen()
-screen.setup(width=600, height=600)
+screen.setup(width=650, height=700)
 screen.bgcolor('black')
 screen.title('A Snake Game')
 screen.tracer(0)
@@ -14,6 +15,9 @@ screen.tracer(0)
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
+frame = Frame()
+
+frame.draw(600, 600)
 
 screen.listen()
 screen.onkey(snake.up, 'Up')
@@ -35,7 +39,7 @@ while game_on:
         snake.extend_snake()
         scoreboard.add_score()
 
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280 :
+    if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290 :
         game_on = False
         scoreboard.game_over()
 
