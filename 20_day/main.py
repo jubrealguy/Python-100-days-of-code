@@ -29,9 +29,20 @@ while game_on:
     snake.move_snake()
 
     # Detect Colission
-    if snake.head.distance(food) < 15:
+    if snake.head.distance(food) < 10:
         print("chopped")
         food.refresh()
+        snake.extend_snake()
         scoreboard.add_score()
+
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280 :
+        game_on = False
+        scoreboard.game_over()
+
+    for block in snake.snake_blocks[1:]:
+        if snake.head.distance(block) < 5:
+            game_on = False
+            scoreboard.game_over()
+
 
 screen.exitonclick ()

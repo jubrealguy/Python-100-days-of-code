@@ -1,7 +1,7 @@
 from turtle import Turtle
 
-starting_pos = [(0, 0), (-20, 0), (-40, 0)]
-MOVE_DISTANCE = 20
+starting_pos = [(0, 0), (-10, 0), (-30, 0)]
+MOVE_DISTANCE = 10
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -15,14 +15,22 @@ class Snake:
 
     def create_snake(self):
         for pos in starting_pos:
-            self.snake_block = Turtle('square')
-            self.snake_block.color('white')
-            self.snake_block.penup()
-            self.snake_block.goto(pos)
-            self.snake_blocks.append(self.snake_block)
+            self.add_snake_block(pos)
+
+    def add_snake_block(self, pos):
+        self.snake_block = Turtle('circle')
+        self.snake_block.color('red')
+        self.snake_block.shapesize(stretch_len=0.5, stretch_wid=0.5)
+        self.snake_block.penup()
+        self.snake_block.goto(pos)
+        self.snake_blocks.append(self.snake_block)
+
+    def extend_snake(self):
+        self.add_snake_block(self.snake_blocks[-1].position())
+
 
     def move_snake(self):
-        for block_index in range(2, 0, -1):
+        for block_index in range(len(self.snake_blocks) - 1, 0, -1):
             x_cor = self.snake_blocks[block_index - 1].xcor()
             y_cor = self.snake_blocks[block_index - 1].ycor()
             self.snake_blocks[block_index].goto(x_cor, y_cor)
