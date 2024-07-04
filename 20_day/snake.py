@@ -12,6 +12,7 @@ class Snake:
         self.snake_blocks = []
         self.create_snake()
         self.head = self.snake_blocks[0]
+        self.head.shape("turtle")
 
     def create_snake(self):
         for pos in starting_pos:
