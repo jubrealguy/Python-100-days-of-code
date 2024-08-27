@@ -7,7 +7,7 @@ black = data[data['Primary Fur Color'] == 'Black']
 
 fur_dict = {
     "fur color": ["gray", "cinnamon", "black"],
-    "count": [gray.shape[0], cinnamon.shape[0], black.shape[0]]
+    "count": [gray.shape[0], len(cinnamon), black.shape[0]]
 }
 
 new_data = pd.DataFrame(fur_dict)
