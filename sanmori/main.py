@@ -103,13 +103,13 @@ merged_data = pd.merge(newest_data, disease_combined_full, on=['Rid', 'Weight1_n
 final_merged_data = pd.merge(merged_data, disability_combined_full, on=['Rid', 'Weight1_new'], how='inner')
 
 
-final_data = final_merged_data[final_merged_data["Age"] >= 40]
+final_data = final_merged_data[final_merged_data["Age"] >= 50]
 
 
 # Converting the data type of the Age from category to integer so t can be worked upon easily
 final_data['Age'] = final_data['Age'].cat.codes
 
-print(final_data.dtypes)
+print(final_data.info())
 
 final_data.to_stata('final_data.dta', write_index=False)
 final_data.to_csv('final_data.csv')

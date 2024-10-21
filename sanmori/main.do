@@ -72,8 +72,8 @@ merge 1:1 RID WEIGHT1_NEW using disease_combined_full
 merge 1:1 RID WEIGHT1_NEW using disability_combined_full
 
 * ********************************** 8. Filter Age and Save Data *******************************************
-* Keep only rows where Age is greater than or equal to 40
-drop if Age < 40
+* Keep only rows where Age is greater than or equal to 50
+drop if Age < 50
 
 * Save the final data as a .dta file
 save "final_data.dta", replace
