@@ -4,7 +4,7 @@ import requests
 
 
 OWM = 'https://api.openweathermap.org/data/2.5/weather'
-API_KEY = '9111648e8bbe0ba6f3e54eff0330f3db'
+# API_KEY = '9111648e8bbe0ba6f3e54eff0330f3db'
 
 weather_params = {
     'lat': 6.5244,
