@@ -21,6 +21,20 @@ print(links)
 upvotes = [int(votes.getText().split()[0]) for votes in soup.find_all(name="span", class_="score")]
 print(upvotes)
 
+indexes = []
+sorted_votes = sorted(upvotes, reverse=True)
+for vote in sorted_votes:
+    index = upvotes.index(vote)
+    indexes.append(index)
+
+print(indexes)
+
+for index in indexes:
+    print(upvotes[index], texts[index])
+    # print(f"{n}.", index, upvotes[index], texts[index], links[index])
+    n+=1
+
+
 
 
 
