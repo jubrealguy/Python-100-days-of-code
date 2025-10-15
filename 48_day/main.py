@@ -20,7 +20,7 @@ print(price.text)
 # Confirm it's loaded
 print("Page title:", driver.title)
 
-# Keep open for 10 seconds
+# Keep open for 10 secondss
 time.sleep(10)
 
 driver.quit()
